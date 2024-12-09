@@ -21,9 +21,5 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path('', views.index, name="index"),
-    path('', include("slush.urls")),
-    path('', include("manuscript.urls")),
-    path('', include("marketing.urls")),
+    path("marketing/", views.marketing, name="marketing"),
 ]
