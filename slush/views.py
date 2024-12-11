@@ -3,5 +3,9 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def slush(request):
-    return HttpResponse("<a href='/'>SLUSH</a>")
+def slush_view(request):
+    if request.method == "POST":
+        print(request.POST)
+        
+    else:
+        return render(request, "slush/slush.html")

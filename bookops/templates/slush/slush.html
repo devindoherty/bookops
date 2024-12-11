@@ -1,0 +1,41 @@
+{% extends "bookops/layout.html" %}
+{% load static %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        <div id="submission-container">
+            <h3>New Submission</h3>
+            <form id="compose-form" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    Author: <input disabled class="form-control" value="{{ request.user.username }}" name="author">
+                </div>
+                <div class="form-group">
+                    Title: <input id="submission-title" class="form-control" name="title">
+                </div>
+                <div class="form-group">
+                    Synopsis: <input id="submission-synopsis" class="form-control" name="synopsis">
+                </div>
+                <textarea class="form-control" id="submission-body" name="body" placeholder="Copy and paste your manuscript here."></textarea>
+                <input type="submit" class="btn btn-primary" value="slush"/>
+            </form>
+        </div>
+        <br>
+        <div id="pile-container">
+            <h3>The Pile</h3>
+            {% if request.submissions %}
+                {% for submission in request.submissions %}
+                    <div>
+                        {submission.title}
+                        {submission.author}
+                        {submission.timestamp}
+                    </div>
+                {% endfor %}
+            {% else %}
+                    <h4>Is Empty at the Moment</h4>
+            {% endif %}
+        </div>
+    {% else %}
+        You must be logged in to access this page.
+    {% endif %}
+{% endblock %}

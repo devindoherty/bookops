@@ -20,5 +20,5 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('slush/', views.slush, name="slush"),
+    path('slush/', views.slush_view, name="slush"),
 ]

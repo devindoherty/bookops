@@ -22,7 +22,11 @@ from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', views.index, name="index"),
+    path('', views.index_view, name="index"),
+    path('register', views.register_view, name="register"),
+    path('login', views.login_view, name="login"),
+    path('account', views.account_view, name="account"),
+    
     path('', include("slush.urls")),
     path('', include("manuscript.urls")),
     path('', include("marketing.urls")),

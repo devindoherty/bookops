@@ -1,0 +1,13 @@
+#nav-container {
+    color: white;
+    background-color: blue;
+    text-decoration: none;
+}
+
+#nav-container a, 
+#nav-container a:visited, 
+#nav-container a:hover, 
+#nav-container a:active {
+    color: inherit;
+    text-decoration: inherit;
+}
