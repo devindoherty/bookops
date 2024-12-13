@@ -13,15 +13,17 @@ class Manuscript(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     read = models.BooleanField(default=False)
     accepted = models.BooleanField(default =False)
+    editor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="editing")
     
     def serialize(self):
         return {
             "id": self.id,
             "title": self.title,
-            "author": self.author,
+            "author": self.author.username,
             "synopsis": self.synopsis,
             "body": self.body,
             "timestamp": self.timestamp.strftime("%b %d %Y, %I:%M %p"),
             "read": self.read,
-            "accepted": self.accepted
+            "accepted": self.accepted,
+            "editor": self.editor.username,
         }

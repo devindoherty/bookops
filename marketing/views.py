@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 
-def marketing(request):
-    pass
+def marketing_view(request):
+    return render(request, "marketing/marketing.html")

@@ -21,6 +21,9 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path("manuscript/", views.manuscript, name="manuscript"),
+    path("manuscripts/", views.manuscripts, name="manuscripts"),
+    path("manuscripts/<str:get>", views.get_manuscripts, name="get_manuscripts"),
+    path("manuscript/<int:id>", views.get_manuscript, name="get_manuscript"),
+    path("manuscript/edit/<int:id>", views.edit_manuscript, name="edit_manuscript")
 ]
 

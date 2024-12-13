@@ -21,4 +21,5 @@ from . import views
 
 urlpatterns = [
     path('slush/', views.slush_view, name="slush"),
+    path('slush/read/<int:id>', views.read_view, name="read")
 ]

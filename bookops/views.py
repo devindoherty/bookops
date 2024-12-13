@@ -11,7 +11,6 @@ def index_view(request):
 
 def register_view(request):
     if request.method == "POST":
-        print(request.POST)
         name = request.POST["name"]
         email = request.POST["email"]
         password = request.POST["password"]
@@ -42,7 +41,27 @@ def register_view(request):
         return render(request, "bookops/register.html")
 
 def login_view(request):
-    return render(request, "bookops/login.html")
+    if request.method == "POST":
+        email = request.POST["email"]
+        password = request.POST["password"]
+        username = User.objects.get(email=email).username
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse("index"))
+        else:
+            return render(request, "bookops/login.html", {
+                "message": "Login invalid."
+            })
+    else:
+        return render(request, "bookops/login.html")
 
 def account_view(request):
-    return HttpResponse("ACCOUNTS!")
+    return render(request, "bookops/account.html")
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("index"))
+
+

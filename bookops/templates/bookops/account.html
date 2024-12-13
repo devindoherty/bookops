@@ -1,0 +1,10 @@
+{% extends "bookops/layout.html" %}
+{% load static %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        <h2>Account</h2>
+    {% else %}
+        You must be logged in to access this page.
+    {% endif %}
+{% endblock %}

@@ -21,5 +21,5 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path("marketing/", views.marketing, name="marketing"),
+    path("marketing/", views.marketing_view, name="marketing"),
 ]

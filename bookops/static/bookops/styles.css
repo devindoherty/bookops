@@ -11,3 +11,8 @@
     color: inherit;
     text-decoration: inherit;
 }
+
+#navbarDropdown {
+    font-size: 2em;
+    font-weight: bold;
+}

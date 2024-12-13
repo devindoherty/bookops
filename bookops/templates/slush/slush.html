@@ -17,20 +17,29 @@
                     Synopsis: <input id="submission-synopsis" class="form-control" name="synopsis">
                 </div>
                 <textarea class="form-control" id="submission-body" name="body" placeholder="Copy and paste your manuscript here."></textarea>
-                <input type="submit" class="btn btn-primary" value="slush"/>
+                <input type="submit" class="btn btn-primary" value="Submit"/>
             </form>
         </div>
         <br>
         <div id="pile-container">
             <h3>The Pile</h3>
-            {% if request.submissions %}
-                {% for submission in request.submissions %}
-                    <div>
-                        {submission.title}
-                        {submission.author}
-                        {submission.timestamp}
-                    </div>
-                {% endfor %}
+            {% if submissions %}
+                <div class="container-fluid">
+                    {% for submission in submissions %}
+                        <div class="row" id="{{submission.id}}">
+                            <div class="col">{{submission.title}}</div>
+                            <div class="col">{{submission.author}}</div>
+                            <div class="col">{{submission.synopsis}}</div>
+                            <div class="col">{{submission.read}}</div>
+                            <div class="col">{{submission.accepted}}</div>
+                            <div class="col">{{submission.timestamp}}</div>
+                            <a href = "{% url 'read' submission.id %}"><div classs="col"><button class="btn btn-sm btn-outline-primary">Read</button></div></a>
+                            {% if user.editor %}
+                                <div class="col"><button class="btn btn-sm btn-outline-primary" onclick = "accept_manuscript(this.parentNode.parentNode.id)">Accept</button></div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
             {% else %}
                     <h4>Is Empty at the Moment</h4>
             {% endif %}
@@ -38,4 +47,8 @@
     {% else %}
         You must be logged in to access this page.
     {% endif %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'slush/slush.js' %}"></script>
 {% endblock %}
