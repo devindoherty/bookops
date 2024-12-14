@@ -3,8 +3,101 @@
 
 {% block body %}
     {% if user.is_authenticated %}
-        <h2>MARKETING SUITE</h2>
+        <div class="container" id="marketing-header-container"><h2>Marketing Suite</h2></div>
+        <div class="container" id="marketing-suite-sim">
+            <form id="sim-form" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Manuscript: </label><select class="form-control" name="selected-manuscript">
+                        {% for book in publications %}
+                            <option value="{{book.id}}">{{book.title}} by {{book.author.username}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Simulate Sales"/>
+            </form>
+            <div class="container" id="sim-results">
+
+            </div>
+        </div>
+        
+        <!-- UNDER CONSTRUCTION BELOW -->
+        <div class="container" id="sale-container"> </div>
+        <div class="container" id="lead-container"> </div>
+        <div class="container" id="submit-container"></div>
+        <script type="text/babel">
+            function Sale() {
+                // Work in Progress                
+                const[state, setState] = React.useState({
+                    sale_manuscript: ""
+                });
+                // const handleSubmit = (event) => {
+                //     event.preventDefault();
+                //     setFormData("Your new data here");
+                // };
+
+                function updateManuscript(event) {
+                    setState({
+                        sale_manuscript: even.target.value
+                    })
+                }
+
+                return(
+                <div>
+                    <form onSubmit={handleSubmit}>
+                        <h4>New Sale Data</h4>
+                        <div class="form-group">
+                            <label>Manuscript: </label><input class="form-control" name="sale-manuscript" value={state.sale_manuscript} onChange={updateManuscript}></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Buyer: </label><input class="form-control" name="sale-buyer"></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Location: </label><input class="form-control" name="sale-location"></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Online: <br/><input class="form-check-input" type="checkbox" name="sale-online"></input>
+                            </label></div>
+                        <input class="btn btn-primary" type="submit" value="Submit"/>
+                    </form>
+                    <hr></hr>
+                </div>
+                );
+            }
+
+            function Lead() {
+                return(
+                <div>
+                    <form onSubmit="">
+                        <h4>New Lead Data</h4>
+                        <div class="form-group">
+                            <label>Name: </label><input class="form-control" name="lead-name"></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Description: </label><input class="form-control" name="lead-description"></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Type: </label><input class="form-control" name="lead-type"></input>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit"/>
+                    </form>
+                    <hr/>
+                </div>
+                );
+            }
+
+            
+            
+            ReactDOM.render(<Sale />, document.querySelector("#sale-container"));
+            ReactDOM.render(<Lead />, document.querySelector("#lead-container"));
+        </script>
     {% else %}
         You must be logged in to access this page.
     {% endif %}
+{% endblock %}
+
+{% block script %}
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 {% endblock %}

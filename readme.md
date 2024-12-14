@@ -22,12 +22,15 @@ BookOps is organized along 4 seperate axis.
 - One page app for selecting manuscripts and editing them
 
 ### Marketing
-- Defines the model for a Lead, generic data point for marketing information.
-- Starting a React app here.
+- Defines the model for a Lead, Sale, Buyer generic data point for marketing information.
+- Was unable to fully realize this section in the final product.
+- Start of a React app, but couldn't get State to function, also not connection to the backend.
+- Form page runs a simulation of generating sales and buyers.
 
 #### Requirements
 - Using Bootstrap and Bootstrap's Javascript plugins
-- No other external python libraries
+- We use the Python random library for simulating marketing data
+- No other python dependencies
 
 #### Video
 Link: https://youtu.be/B66RcDoCQKE

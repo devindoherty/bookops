@@ -4,6 +4,7 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
 from .models import User
+from manuscript.models import Manuscript
 
 def index_view(request):
     # return HttpResponse("<a href='/slush'>BOOK OPS</a>")
@@ -58,7 +59,16 @@ def login_view(request):
         return render(request, "bookops/login.html")
 
 def account_view(request):
-    return render(request, "bookops/account.html")
+    
+    user = request.user
+    
+    manuscripts = Manuscript.objects.filter(author=user)
+    editing = Manuscript.objects.filter(editor=user)
+    
+    return render(request, "bookops/account.html", {
+        "manuscripts" : manuscripts,
+        "editing": editing,
+    })
 
 def logout_view(request):
     logout(request)

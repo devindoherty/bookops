@@ -3,8 +3,8 @@
 
 {% block body %}
     <div class="container" id="read-buttons-container">
-        <button class="btn btn-lg btn-outline-success" id="read-accept">Accept</button>
-        <button class="btn btn-lg btn-outline-info" id="read-edit">Edit</button>
+        <button class="btn btn-lg btn-outline-success" id="read-accept" value={{manuscript.id}} onclick="">Accept</button>
+        <button class="btn btn-lg btn-outline-info" id="read-edit" value={{manuscript.id}} onclick="">Edit</button>
     </div>
     <div class="container border" id = "manuscript-cover-container">
         <p class="text-center">{{manuscript.title}} by {{manuscript.author}}</p>

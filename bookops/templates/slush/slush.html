@@ -25,6 +25,15 @@
             <h3>The Pile</h3>
             {% if submissions %}
                 <div class="container-fluid">
+                    <div class="row" id="pile-headers">
+                        <div class="col">Title</div>
+                        <div class="col">Author</div>
+                        <div class="col">Synopsis</div>
+                        <div class="col">Read</div>
+                        <div class="col">Accepted</div>
+                        <div class="col">Submission Time</div>
+                        <div class="col">More Information</div>
+                    </div>
                     {% for submission in submissions %}
                         <div class="row" id="{{submission.id}}">
                             <div class="col">{{submission.title}}</div>
