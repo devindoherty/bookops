@@ -20,6 +20,7 @@ from django.urls import include, path
 
 from . import views
 
+# Path for the marketing page
 urlpatterns = [
     path("marketing/", views.marketing_view, name="marketing"),
 ]

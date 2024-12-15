@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import include, path
 from . import views
 
+# slush page and read path
 urlpatterns = [
     path('slush/', views.slush_view, name="slush"),
     path('slush/read/<int:id>', views.read_view, name="read")

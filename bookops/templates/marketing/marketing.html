@@ -1,6 +1,7 @@
 {% extends "bookops/layout.html" %}
 {% load static %}
 
+<!-- Marketing Suite Page -->
 {% block body %}
     {% if user.is_authenticated %}
         <div class="container" id="marketing-header-container"><h2>Marketing Suite</h2></div>
@@ -11,13 +12,41 @@
                     <label>Manuscript: </label><select class="form-control" name="selected-manuscript">
                         {% for book in publications %}
                             <option value="{{book.id}}">{{book.title}} by {{book.author.username}}</option>
-                        {% endfor %}
+                       {% endfor %}
                     </select>
                 </div>
                 <input type="submit" class="btn btn-primary" value="Simulate Sales"/>
-            </form>
+           </form>
             <div class="container" id="sim-results">
-
+                <p>Sales Generated: {{sales.count}}</p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Sex</th>
+                            <th scope="col">Race</th>
+                            <th scope="col">Education</th>
+                            <th scope="col">Sale Location</th>
+                            <th scope="col">Online Sale</th>
+                            <th scope="col">Date of Sale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sale in sales %}
+                            <tr>
+                                <th scope="row">{{sale.buyer.name}}</th>
+                                <td>{{sale.buyer.age}}</td>
+                                <td>{{sale.buyer.sex}}</td>
+                                <td>{{sale.buyer.race}}</td>
+                                <td>{{sale.buyer.education}}</td>
+                                <td>{{sale.location}}</td>
+                                <td>{{sale.online}}</td>
+                                <td>{{sale.time}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
         

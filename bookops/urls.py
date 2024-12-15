@@ -20,6 +20,7 @@ from django.urls import include, path
 
 from . import views
 
+# All urls including sub app paths
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', views.index_view, name="index"),

@@ -6,10 +6,11 @@ from django.urls import reverse
 from .models import User
 from manuscript.models import Manuscript
 
+# Home page render
 def index_view(request):
-    # return HttpResponse("<a href='/slush'>BOOK OPS</a>")
     return render(request, "bookops/index.html")
 
+# Registration page render
 def register_view(request):
     if request.method == "POST":
         name = request.POST["name"]
@@ -41,6 +42,7 @@ def register_view(request):
     else:
         return render(request, "bookops/register.html")
 
+# Login render
 def login_view(request):
     if request.method == "POST":
         email = request.POST["email"]
@@ -58,6 +60,7 @@ def login_view(request):
     else:
         return render(request, "bookops/login.html")
 
+# Account page render
 def account_view(request):
     
     user = request.user
@@ -70,6 +73,7 @@ def account_view(request):
         "editing": editing,
     })
 
+# Logout function
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))

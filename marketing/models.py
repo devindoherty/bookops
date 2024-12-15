@@ -13,7 +13,7 @@ class Lead(models.Model):
 
 class Sale(models.Model):
     manuscript = models.ForeignKey(Manuscript, on_delete=models.CASCADE, related_name="sales")
-    buyer = models.ForeignKey(Manuscript, on_delete=models.CASCADE, related_name="buys")
+    buyer = models.ForeignKey("Buyer", on_delete=models.CASCADE, related_name="buys")
     online = models.BooleanField(default=True)
     location = models.CharField(max_length=255)
     time = models.DateTimeField(auto_now_add=True)

@@ -1,6 +1,6 @@
 {% extends "bookops/layout.html" %}
 {% load static %}
-
+<!-- One Page App with two states, Accepted and MY manuscripts -->
 {% block body %}
     {% if user.is_authenticated and user.editor %}
         <div class="container" id="editor-buttons-container">

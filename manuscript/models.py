@@ -2,7 +2,7 @@ from django.db import models
 from bookops.models import User
 
 
-# Create your models here.
+# Manuscript model and serialization method
 class Manuscript(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="manuscripts")
     # sender = models.ForeignKey("User", on_delete=models.PROTECT, related_name="emails_sent")

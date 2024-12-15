@@ -5,6 +5,7 @@ from django.http import HttpResponse
 
 from manuscript.models import Manuscript
 
+# Displays slush page
 def slush_view(request):
     if request.method == "POST":
         author = request.user
@@ -30,6 +31,7 @@ def slush_view(request):
             "submissions": Manuscript.objects.all()
         })
     
+# Read button path from slush pile
 def read_view(request, id):
     print(id)
     if request.method == "POST":

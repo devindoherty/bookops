@@ -20,6 +20,7 @@ from django.urls import include, path
 
 from . import views
 
+# GET base and API for the one page app backend
 urlpatterns = [
     path("manuscripts/", views.manuscripts, name="manuscripts"),
     path("manuscripts/<str:get>", views.get_manuscripts, name="get_manuscripts"),
